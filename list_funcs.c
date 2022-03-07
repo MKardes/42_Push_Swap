@@ -87,3 +87,10 @@ t_stack	*get_listlast(t_stack *x)
 		x = x -> next;
 	return (x);
 }
+
+t_stack	*get_last2(t_stack *x)
+{
+	while (x -> next -> next)
+		x = x -> next;
+	return (x);
+}

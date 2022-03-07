@@ -34,7 +34,7 @@ void    stack_print(t_stack *a, t_stack *b)
     {
         if (a -> content >= 0 && a -> content < 10)
             printf("\n|  %d  |  |     |", a -> content);
-        else if (a -> content > 10 && a -> content < 100)
+        else if (a -> content >= 10 && a -> content < 100)
             printf("\n|  %d |  |     |", a -> content);
         else if (a -> content >= 100 && a -> content < 1000)
             printf("\n| %d |  |     |", a -> content);

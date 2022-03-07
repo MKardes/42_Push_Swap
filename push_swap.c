@@ -58,16 +58,15 @@ int	main(int ac, char **av)
 
 	b = NULL;
 	a = NULL;
-	b = list_fill(b);
+	//b = list_fill(b);
 	a = ft_atol(a, av);
+	int     i = 0;
+	while (i++ < 5)
+		ft_pb(&a, &b);
 	if (!a)
 		return(0);
 	stack_print(a, b);
-	ft_sa(a, 1);
-	stack_print(a, b);
-	ft_sb(b, 1);
-	stack_print(a, b);
-	ft_ss(a, b);
+	ft_pa(&a, &b);
 	stack_print(a, b);
 	return(0);
 }

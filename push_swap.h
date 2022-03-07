@@ -22,6 +22,12 @@ void	ft_ss(t_stack *a, t_stack *b);
 void	ft_ra(t_stack **a, int i);
 void    ft_rb(t_stack **b, int i);
 void    ft_rr(t_stack **a, t_stack **b);
+void	ft_rra(t_stack **a, int i);
+void    ft_rrb(t_stack **b, int i);
+void    ft_rrr(t_stack **a, t_stack **b);
+void    ft_pa(t_stack **a, t_stack **b);
+void    ft_pb(t_stack **a, t_stack **b);
 t_stack	*get_listlast(t_stack *x);
+t_stack	*get_last2(t_stack *x);
 
 #endif

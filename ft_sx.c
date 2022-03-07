@@ -8,7 +8,7 @@ void    ft_sa(t_stack *a, int i)
 	a -> content = a -> next -> content;
 	a -> next -> content = tmp;
 	if (i == 1)
-		write(1, "sa", 2);
+		write(1, "sa\n", 3);
 }
 
 void    ft_sb(t_stack *b, int i)
@@ -19,13 +19,13 @@ void    ft_sb(t_stack *b, int i)
     	b -> content = b -> next -> content;
     	b -> next -> content = tmp;
     	if (i == 1)
-    		write(1, "sb", 2);
+    		write(1, "sb\n", 3);
 }
 
 void    ft_ss(t_stack *a, t_stack *b)
 {
 	ft_sa(a, 2);
 	ft_sb(b, 2);
-	write(1, "ss", 2);
+	write(1, "ss\n", 3);
 }
 
