@@ -1,28 +1,31 @@
 #include "push_swap.h"
 
-void    ft_sa(t_stack *a)
+void    ft_sa(t_stack *a, int i)
 {
-	t_stack	*tmp;
+	int	tmp;
 
-	tmp = list_new(a -> content);
+	tmp = a -> content;
 	a -> content = a -> next -> content;
-	a -> next -> content = tmp -> content;
-	free(tmp);
+	a -> next -> content = tmp;
+	if (i == 1)
+		write(1, "sa", 2);
 }
 
-void    ft_sb(t_stack *b)
+void    ft_sb(t_stack *b, int i)
 {
-    t_stack *tmp;
-
-    tmp = list_new(b -> content);
-    b -> content = b -> next -> content;
-    b -> next -> content = tmp -> content;
-    free(tmp);
+    	int	tmp;
+    
+	tmp = b -> content;
+    	b -> content = b -> next -> content;
+    	b -> next -> content = tmp;
+    	if (i == 1)
+    		write(1, "sb", 2);
 }
 
 void    ft_ss(t_stack *a, t_stack *b)
 {
-	ft_sa(a);
-	ft_sb(b);
+	ft_sa(a, 2);
+	ft_sb(b, 2);
+	write(1, "ss", 2);
 }
 

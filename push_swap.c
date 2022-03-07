@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 16:52:54 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/06 17:46:12 by mkardes          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 t_stack	*split_atoi(t_stack *lst, char **str)
@@ -75,8 +63,11 @@ int	main(int ac, char **av)
 	if (!a)
 		return(0);
 	stack_print(a, b);
-	ft_ra(&a);
-	write(1, "\n\n| ra rb |", 11);
+	ft_sa(a, 1);
+	stack_print(a, b);
+	ft_sb(b, 1);
+	stack_print(a, b);
+	ft_ss(a, b);
 	stack_print(a, b);
 	return(0);
 }

@@ -1,38 +1,36 @@
 #include "push_swap.h"
 
-void	ft_ra(t_stack **a)
+void	ft_ra(t_stack **a, int i)
 {
-	t_stack *tmp;
-	t_stack	*sr;
+	t_stack *first;
+	t_stack	*last;
 
-	
+	first = *a;
+	last = get_listlast(*a);
+	last -> next = first;
+	*a = first -> next;
+	first -> next = NULL;
+	if (i == 1)
+		write(1, "ra", 2);
 }
 
-t_stack	*ft_rb(t_stack *b)
+void    ft_rb(t_stack **b, int i)
 {
-	t_stack *tmp;
-    t_stack *sr;
+	t_stack *first;
+	t_stack *last;
 
-    tmp = list_new(b -> content);
-    sr = b -> next;
-    free(b);
-    b = sr;
-    b = list_addback(b, tmp);
-    return (b);
+	first = *b;
+	last = get_listlast(*b);
+	last -> next = first;
+	*b = first -> next;
+	first -> next = NULL;
+	if (i == 1)
+		write(1, "ra", 2);
 }
 
-void    ft_rr(t_stack *a, t_stack *b)
+void    ft_rr(t_stack **a, t_stack **b)
 {
-	t_stack	*c;
-	t_stack	*d;
-
-	c = a;
-	d = b;
-	stack_print(a,b);
-	c = ft_ra(c);
-	d = ft_rb(d);
-	stack_print(c,d);
-	a = c;
-	b = d;
-	stack_print(a, b);
+	ft_ra(a, 2);
+	ft_rb(b, 2);
+	write(1, "rr", 2);
 }

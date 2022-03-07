@@ -80,3 +80,10 @@ t_stack *list_fill(t_stack *a)
     }
     return (a);
 }
+
+t_stack	*get_listlast(t_stack *x)
+{
+	while (x -> next)
+		x = x -> next;
+	return (x);
+}
