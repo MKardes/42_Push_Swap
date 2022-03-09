@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rrx.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 19:59:17 by mkardes           #+#    #+#             */
+/*   Updated: 2022/03/09 20:12:38 by mkardes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_rra(t_stack **a, int i)
@@ -15,11 +27,11 @@ void	ft_rra(t_stack **a, int i)
 		write(1, "rra\n", 4);
 }
 
-void    ft_rrb(t_stack **b, int i)
+void	ft_rrb(t_stack **b, int i)
 {
-	t_stack *last2;
-	t_stack *tmp;
-	t_stack *first;
+	t_stack	*last2;
+	t_stack	*tmp;
+	t_stack	*first;
 
 	last2 = get_last2(*b);
 	tmp = last2 -> next;

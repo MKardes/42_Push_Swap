@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sx.c                                            :+:      :+:    :+:   */
+/*   list_funcs_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 19:59:09 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/09 20:15:03 by mkardes          ###   ########.fr       */
+/*   Created: 2022/03/09 20:00:39 by mkardes           #+#    #+#             */
+/*   Updated: 2022/03/09 20:42:26 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_stack *a, int i)
+int	hayirlisi(int *a)
 {
-	int	tmp;
-
-	tmp = a -> content;
-	a -> content = a -> next -> content;
-	a -> next -> content = tmp;
-	if (i == 1)
-		write(1, "sa\n", 3);
+	error();
+	free(a);
+	return (0);
 }
 
-void	ft_sb(t_stack *b, int i)
+t_stack	*get_listlast(t_stack *x)
 {
-	int	tmp;
-
-	tmp = b -> content;
-	b -> content = b -> next -> content;
-	b -> next -> content = tmp;
-	if (i == 1)
-		write(1, "sb\n", 3);
+	while (x -> next)
+		x = x -> next;
+	return (x);
 }
 
-void	ft_ss(t_stack *a, t_stack *b)
+t_stack	*get_last2(t_stack *x)
 {
-	ft_sa(a, 2);
-	ft_sb(b, 2);
-	write(1, "ss\n", 3);
+	while (x -> next -> next)
+		x = x -> next;
+	return (x);
 }

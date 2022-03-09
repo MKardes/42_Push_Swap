@@ -12,6 +12,6 @@ clean:
 
 fclean: clean
 	make fclean -C $(LIBFT)
-	rm -f libft.a
+	rm -f $(NAME)
 
 .PHONY: clean

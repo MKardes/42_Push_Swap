@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rx.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 19:59:41 by mkardes           #+#    #+#             */
+/*   Updated: 2022/03/09 20:13:32 by mkardes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_ra(t_stack **a, int i)
 {
-	t_stack *first;
+	t_stack	*first;
 	t_stack	*last;
 
 	first = *a;
@@ -14,10 +26,10 @@ void	ft_ra(t_stack **a, int i)
 		write(1, "ra", 2);
 }
 
-void    ft_rb(t_stack **b, int i)
+void	ft_rb(t_stack **b, int i)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	first = *b;
 	last = get_listlast(*b);
@@ -28,7 +40,7 @@ void    ft_rb(t_stack **b, int i)
 		write(1, "ra", 2);
 }
 
-void    ft_rr(t_stack **a, t_stack **b)
+void	ft_rr(t_stack **a, t_stack **b)
 {
 	ft_ra(a, 2);
 	ft_rb(b, 2);

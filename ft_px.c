@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_px.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 19:59:03 by mkardes           #+#    #+#             */
+/*   Updated: 2022/03/09 20:11:09 by mkardes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_pa(t_stack **a, t_stack **b)
@@ -15,10 +27,10 @@ void	ft_pa(t_stack **a, t_stack **b)
 	write(1, "pa\n", 3);
 }
 
-void    ft_pb(t_stack **a, t_stack **b)
+void	ft_pb(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
-	t_stack *tmp_a;
+	t_stack	*tmp;
+	t_stack	*tmp_a;
 
 	if (!*a)
 		return ;
