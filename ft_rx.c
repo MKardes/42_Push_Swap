@@ -23,7 +23,7 @@ void	ft_ra(t_stack **a, int i)
 	*a = first -> next;
 	first -> next = NULL;
 	if (i == 1)
-		write(1, "ra", 2);
+		write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_stack **b, int i)
@@ -37,12 +37,12 @@ void	ft_rb(t_stack **b, int i)
 	*b = first -> next;
 	first -> next = NULL;
 	if (i == 1)
-		write(1, "ra", 2);
+		write(1, "ra\n", 3);
 }
 
 void	ft_rr(t_stack **a, t_stack **b)
 {
 	ft_ra(a, 2);
 	ft_rb(b, 2);
-	write(1, "rr", 2);
+	write(1, "rr\n", 3);
 }

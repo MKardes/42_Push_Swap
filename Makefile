@@ -2,6 +2,7 @@ NAME = libft.a
 LIBFT = libft
 
 all: $(NAME)
+	gcc *.c libft.a
 
 $(NAME): $(LIBFT)
 	make -C $(LIBFT)

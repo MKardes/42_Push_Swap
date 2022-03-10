@@ -31,13 +31,12 @@ int	*ft_intjoin(int *a, int tmp, int i)
 	return (c);
 }
 
-int	num_check(int tmp, int *s)
+int	num_check(int tmp, int **s)
 {
 	static int	i;
 	static int	*a;
 	int			j;
 
-	s = a;
 	i++;
 	j = 0;
 	if (i == 1)
@@ -57,6 +56,7 @@ int	num_check(int tmp, int *s)
 		}
 		a = ft_intjoin(a, tmp, i);
 	}
+	*s = a;
 	return (1);
 }
 
@@ -66,7 +66,7 @@ t_stack	*free_v2(char *str)
 	return (0);
 }
 
-t_stack	*split_atoi(t_stack *lst, char **str, int *s)
+t_stack	*split_atoi(t_stack *lst, char **str, int **s)
 {
 	int		i;
 	int		j;
@@ -95,7 +95,7 @@ t_stack	*split_atoi(t_stack *lst, char **str, int *s)
 	return (lst);
 }
 
-t_stack	*ft_atol(t_stack *lst, char **str, int *s)
+t_stack	*ft_atol(t_stack *lst, char **str, int **s)
 {
 	int	i;
 	int	j;
