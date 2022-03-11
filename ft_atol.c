@@ -66,7 +66,7 @@ t_stack	*free_v2(char *str)
 	return (0);
 }
 
-t_stack	*split_atoi(t_stack *lst, char **str, int **s)
+t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk)
 {
 	int		i;
 	int		j;
@@ -81,8 +81,8 @@ t_stack	*split_atoi(t_stack *lst, char **str, int **s)
 		j = 0;
 		while (tom[j])
 		{
-			tmp = atoi(tom[j]);
-			if (!num_check(tmp, s))
+			tmp = ft_atoi_v2(tom[j], chk);
+			if (!num_check(tmp, s) || !chk[0])
 				return (free_v2(tom[j]));
 			ls = list_new(tmp);
 			lst = list_addback(lst, ls);
@@ -100,14 +100,17 @@ t_stack	*ft_atol(t_stack *lst, char **str, int **s)
 	int	i;
 	int	j;
 	int	c;
+	int	chk;
 
+	chk = 1;
 	i = 1;
 	while (str[i] != 0)
 	{
 		j = 0;
 		while (str[i][j])
 		{
-			if (!(ft_isdigit(str[i][j]) || str[i][j] == ' '))
+			if (!(ft_isdigit(str[i][j]) || str[i][j] == ' ' || ((str[i][j] == '-'
+				|| str[i][j] == '+') && ft_isdigit(str[i][j + 1]))))
 			{
 				error();
 				return (NULL);
@@ -116,5 +119,5 @@ t_stack	*ft_atol(t_stack *lst, char **str, int **s)
 		}
 		i++;
 	}
-	return (split_atoi(lst, str, s));
+	return (split_atoi(lst, str, s, &chk));
 }

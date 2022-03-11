@@ -58,7 +58,8 @@ int	main(int ac, char **av)
 	b = NULL;
 	a = NULL;
 	a = ft_atol(a, av, &s);
-	free(s);
+	//free(s);
+	/*
 	while (!check_sort(a))
 	{
 		if (checker(a) == 0)
@@ -68,7 +69,7 @@ int	main(int ac, char **av)
 		else
 			ft_ra(&a, 1);
 
-	}
+	}*/
 	i = 0;
 	while (i++ < 1)
 		ft_pb(&a, &b);

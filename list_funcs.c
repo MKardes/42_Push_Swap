@@ -62,6 +62,6 @@ int	list_size(t_stack *lst)
 
 int	error(void)
 {
-	ft_putstr_fd("Error", 1);
+	ft_putstr_fd("Error\n", 1);
 	return (0);
 }

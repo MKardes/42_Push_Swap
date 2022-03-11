@@ -16,6 +16,10 @@
 # include "Libft/libft.h"
 # include <stdio.h>
 
+typedef struct s_data {
+	int	*
+}
+
 typedef struct s_stack {
 	int				content;
 	struct s_stack	*next;
@@ -27,10 +31,11 @@ t_stack	*list_last(t_stack *a);
 t_stack	*get_listlast(t_stack *x);
 t_stack	*get_last2(t_stack *x);
 t_stack	*ft_atol(t_stack *lst, char **str, int **s);
-int		hayirlisi(int *a);
-int		list_size(t_stack *lst);
-int		error(void);
-int		num_check(int tmp, int **s);
+int	hayirlisi(int *a);
+int	list_size(t_stack *lst);
+int	error(void);
+int	num_check(int tmp, int **s);
+int     ft_atoi_v2(const char *str, int *chk);
 void	stack_print(t_stack *a, t_stack *b);
 void	ft_sa(t_stack *a, int i);
 void	ft_sb(t_stack *b, int i);

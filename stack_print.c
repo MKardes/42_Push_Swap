@@ -24,21 +24,27 @@ void	stack_print(t_stack *a, t_stack *b)
 	{
 		if (a -> content >= 0 && a -> content < 10)
 			printf("\n|  %d  |  ", a -> content);
-		else if (a -> content >= 10 && a -> content < 100)
+		else if ((a -> content >= 10 && a -> content < 100)
+			|| (a -> content < 0 && a -> content > -10))
 			printf("\n|  %d |  ", a -> content);
-		else if (a -> content >= 100 && a -> content < 1000)
+		else if ((a -> content >= 100 && a -> content < 1000)
+			|| (a -> content <= -10 && a -> content > -100))
 			printf("\n| %d |  ", a -> content);
-		else if (a -> content >= 1000 && a -> content < 10000)
+		else if ((a -> content >= 1000 && a -> content < 10000)
+			|| (a -> content <= -100 && a -> content > -1000))
 			printf("\n| %d|  ", a -> content);
 		else
 			printf("\n|%d|  ", a -> content);
-		if (b -> content >= 0 && b -> content < 10)
+		if (b -> content >= 0 && b -> content < 10)	
 			printf("|  %d  |", b -> content);
-		else if (b -> content >= 10 && b -> content < 100)
+		else if ((b -> content >= 10 && b -> content < 100)
+			|| (b -> content < 0 && b -> content > -10))
 			printf("|  %d |", b -> content);
-		else if (b -> content >= 100 && b -> content < 1000)
+		else if ((b -> content >= 100 && b -> content < 1000)
+			|| (b -> content <= -10 && b -> content > -100))
 			printf("| %d |", b -> content);
-		else if (b -> content >= 1000 && b -> content < 10000)
+		else if ((b -> content >= 1000 && b -> content < 10000)
+			|| (b -> content <= -100 && b -> content > -1000))
 			printf("| %d|", b -> content);
 		else
 			printf("|%d|", b -> content);
@@ -49,11 +55,14 @@ void	stack_print(t_stack *a, t_stack *b)
 	{
 		if (a -> content >= 0 && a -> content < 10)
 			printf("\n|  %d  |  |     |", a -> content);
-		else if (a -> content >= 10 && a -> content < 100)
+		else if ((a -> content >= 10 && a -> content < 100)
+			|| (a -> content < 0 && a -> content > -10))
 			printf("\n|  %d |  |     |", a -> content);
-		else if (a -> content >= 100 && a -> content < 1000)
+		else if ((a -> content >= 100 && a -> content < 1000)
+			|| (a -> content <= -10 && a -> content > -100))
 			printf("\n| %d |  |     |", a -> content);
-		else if (a -> content >= 1000 && a -> content < 10000)
+		else if ((a -> content >= 1000 && a -> content < 10000)
+			|| (a -> content <= -100 && a -> content > -1000))
 			printf("\n| %d|  |     |", a -> content);
 		else
 			printf("\n|%d|  |     |", a -> content);
@@ -63,11 +72,14 @@ void	stack_print(t_stack *a, t_stack *b)
 	{
 		if (b -> content >= 0 && b -> content < 10)
 			printf("\n|     |  |  %d  |", b -> content);
-		else if (b -> content > 10 && b -> content < 100)
+		else if ((b -> content > 10 && b -> content < 100)
+			|| (b -> content < 0 && b -> content > -10))
 			printf("\n|     |  |  %d |", b -> content);
-		else if (b -> content >= 100 && b -> content < 1000)
+		else if ((b -> content >= 100 && b -> content < 1000)
+			|| (b -> content <= -10 && b -> content > -100))
 			printf("\n|     |  | %d |", b -> content);
-		else if (b -> content >= 1000 && b -> content < 10000)
+		else if ((b -> content >= 1000 && b -> content < 10000)
+			|| (b -> content <= -100 && b -> content > -1000))
 			printf("\n|     |  | %d|", b -> content);
 		else
 			printf("\n|     |  |%d|", b -> content);
