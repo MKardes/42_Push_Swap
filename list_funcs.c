@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:37 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/09 20:23:29 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/26 15:23:28 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_stack	*list_last(t_stack *a)
 	t_stack	*tmp;
 
 	tmp = a;
+	if (!a)
+		return (NULL);
 	while (tmp -> next)
 	{
 		tmp = tmp -> next;
