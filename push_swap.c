@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/28 23:26:36 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/28 23:55:10 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	rr_check(t_stack **a, t_stack **b)
 	int rx;
 
     rx = is_rx(*a, *b);
-    stack_print(*a,*b);
     if (rx == ra)
         ft_ra(a, 1);
     else if (rx == rb)
@@ -44,11 +43,25 @@ void	ss_check(t_stack **a, t_stack **b)
 {
 	int	sx;
 
+	if (!*b)
+	{
+		if ((*a) -> content > (*a) -> next -> content)
+			ft_sa(*a, 1);
+		return ;
+	}
+	if (!((*a) -> next) || !((*b) -> next))
+	{
+		if (!((*b) -> next) && (*a) -> content > (*a) -> next -> content)
+			ft_sa(*a, 1);
+		else if (!((*a) -> next) && (*b) -> content < (*b) -> next -> content)
+			ft_sb(*b, 1);
+		return ;
+	}
 	sx = is_sx(*a, *b);
 	stack_print(*a, *b);
     if (sx == sa)
         ft_sa(*a, 1);
-    else if (sx == rb)
+    else if (sx == sb)
         ft_sb(*b, 1);
     else if (sx == ss)
         ft_ss(*a, *b);
@@ -60,15 +73,12 @@ void	first_algorithm(t_stack **a, t_stack **b)
 	stack_print(*a, *b);
 	while ((*a) -> next)
 	{
-		printf("1\n");
 		rr_check(a, b);
-		printf("2\n");
 		ss_check(a, b);
-		printf("3\n");
 		if (((*a) -> content < (*a) -> next -> content))
 			ft_pb(a,b);
-		else if (((*a) -> content > (*a) -> next -> content))
-			ft_sa(*a,1);
+		//else if (((*a) -> content > (*a) -> next -> content))
+		//	ft_sa(*a,1);
 		//printf("error\n");
 	}
 }

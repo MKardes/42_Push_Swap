@@ -38,5 +38,5 @@ int	is_sx(t_stack *a, t_stack *b)
 		return (sb);
 	if (a -> content > a -> next -> content)
 		return (sa);
-	return (ss);
+	return (4);
 }
