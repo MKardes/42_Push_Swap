@@ -14,5 +14,6 @@ clean:
 fclean: clean
 	make fclean -C $(LIBFT)
 	rm -f $(NAME)
+	rm -rf push_swap
 
 .PHONY: clean
