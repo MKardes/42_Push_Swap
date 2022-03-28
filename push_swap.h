@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:27:10 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/26 18:20:38 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/28 23:25:32 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_rrr(t_stack **a, t_stack **b);
 void	ft_pa(t_stack **a, t_stack **b);
 void	ft_pb(t_stack **a, t_stack **b);
 int 	is_rx(t_stack *a, t_stack *b);
-int 	is_rra(t_stack *a);
+int 	is_sx(t_stack *a, t_stack *b);
 
 
 #endif
