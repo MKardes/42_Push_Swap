@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 00:20:20 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 00:41:25 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,31 @@ void	ss_check(t_stack **a, t_stack **b, int *gecici)
 
 int sort_check(t_stack **a, t_stack **b, int *gecici)
 {
+	t_stack *iter_a;
+	t_stack	*iter_b;
 
+	iter_a = *a;
+	iter_b = *b;
+	while (!iter_b && iter_a -> next && iter_a -> content < iter_a -> next -> content)
+	{
+		if (!(iter_a -> next -> next))
+			return (1);
+		iter_a = iter_a -> next;
+	}
+	while (!iter_a && iter_b -> next && iter_b -> content > iter_b -> next -> content)
+	{
+		if (!(iter_b -> next -> next))
+		{
+			while (*b)
+			{
+				ft_pa(a, b);
+				(*gecici)++;
+			}
+			return (1);
+		}
+		iter_b = iter_b -> next;
+	}
+	return (0);
 }
 
 void	first_algorithm(t_stack **a, t_stack **b, int *gecici)
@@ -100,6 +124,9 @@ void	first_algorithm(t_stack **a, t_stack **b, int *gecici)
 			(*gecici)++;
 		}
 	}
+	ft_pb(a,b);
+	if (sort_check(a, b, gecici))
+		return ;
 }
 
 int	main(int ac, char **av)
