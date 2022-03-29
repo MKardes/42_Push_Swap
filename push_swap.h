@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:27:10 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 00:20:14 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 10:00:15 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ t_stack	*list_addback(t_stack *a, t_stack *b);
 t_stack	*list_last(t_stack *a);
 t_stack	*get_listlast(t_stack *x);
 t_stack	*get_last2(t_stack *x);
-t_stack	*ft_atol(t_stack *lst, char **str, int **s);
+t_stack	*ft_atol(t_stack *lst, char **str, int **s, int *cnt);
 int		hayirlisi(int *a);
 int		list_size(t_stack *lst);
 int		error(void);
-int		num_check(int tmp, int **s);
+int		num_check(int tmp, int **s, int *chk);
 int     ft_atoi_v2(const char *str, int *chk);
 void	stack_print(t_stack *a, t_stack *b);
 void	ft_sa(t_stack *a, int i);

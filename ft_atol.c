@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:00:11 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/09 20:38:22 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 09:59:05 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	*ft_intjoin(int *a, int tmp, int i)
 	return (c);
 }
 
-int	num_check(int tmp, int **s)
+int	num_check(int tmp, int **s, int *cnt)
 {
 	static int	i;
 	static int	*a;
 	int			j;
 
-	i++;
+	*cnt = i++;
 	j = 0;
 	if (i == 1)
 	{
@@ -66,7 +66,7 @@ t_stack	*free_v2(char *str)
 	return (0);
 }
 
-t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk)
+t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk, int *cnt)
 {
 	int		i;
 	int		j;
@@ -82,7 +82,7 @@ t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk)
 		while (tom[j])
 		{
 			tmp = ft_atoi_v2(tom[j], chk);
-			if (!num_check(tmp, s) || !chk[0])
+			if (!num_check(tmp, s, cnt) || !chk[0])
 				return (free_v2(tom[j]));
 			ls = list_new(tmp);
 			lst = list_addback(lst, ls);
@@ -95,7 +95,7 @@ t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk)
 	return (lst);
 }
 
-t_stack	*ft_atol(t_stack *lst, char **str, int **s)
+t_stack	*ft_atol(t_stack *lst, char **str, int **s, int *cnt)
 {
 	int	i;
 	int	j;
@@ -119,5 +119,5 @@ t_stack	*ft_atol(t_stack *lst, char **str, int **s)
 		}
 		i++;
 	}
-	return (split_atoi(lst, str, s, &chk));
+	return (split_atoi(lst, str, s, &chk, cnt));
 }

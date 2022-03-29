@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 00:41:25 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 10:00:36 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,42 @@ int sort_check(t_stack **a, t_stack **b, int *gecici)
 	return (0);
 }
 
+int	a_check(t_stack *a)
+{
+	while (a -> next)
+	{
+		if (a->content>a->next->content)
+			return (0);
+		a = a -> next;
+	}
+	return (1);
+}
+
+int b_check(t_stack *b)
+{
+    while (b -> next)
+    {
+        if (b->content<b->next->content)
+            return (0);
+        b = b -> next;
+    }
+    return (1);
+}
+
+int	all_check(t_stack **a, t_stack **b, int *gecici)
+{
+	if (a_check(*a) && b_check(*b))
+	{
+		while (*b)
+		{
+			ft_pa(a, b);
+			(*gecici)++;
+		}
+		return (1);
+	}
+	return (0);
+}
+
 void	first_algorithm(t_stack **a, t_stack **b, int *gecici)
 {
 	int	i = 0;
@@ -124,8 +160,7 @@ void	first_algorithm(t_stack **a, t_stack **b, int *gecici)
 			(*gecici)++;
 		}
 	}
-	ft_pb(a,b);
-	if (sort_check(a, b, gecici))
+	if (all_check(a, b, gecici))
 		return ;
 }
 
@@ -135,12 +170,15 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	int		gecici = 0;
 	int		*s;
+	int		cnt;
 	int		i;
 
 	b = NULL;
 	a = NULL;
-	a = ft_atol(a, av, &s);
-	first_algorithm(&a,&b, &gecici);
+	a = ft_atol(a, av, &s, &cnt);
+	//while (!(all_check(&a, &b, &gecici))
+	//first_algorithm(&a,&b, &gecici);
+	printf("%d",cnt + 1);
 	stack_print(a, b);
 	printf("*****%d*****",gecici);
 	return (0);
