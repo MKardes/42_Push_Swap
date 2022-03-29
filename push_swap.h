@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:27:10 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 10:00:15 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 12:49:37 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # include "Libft/libft.h"
 # include <stdio.h>
 
+typedef struct s_data {
+	int		a_cnt;
+	int		b_cnt;
+	int		count;
+	int		gecici;
+	int		*s;
+	int		chk;
+	int		a_rst;
+	int		b_rst;
+}	t_data;
+
 typedef struct s_stack {
 	int				content;
 	struct s_stack	*next;
@@ -33,13 +44,13 @@ t_stack	*list_addback(t_stack *a, t_stack *b);
 t_stack	*list_last(t_stack *a);
 t_stack	*get_listlast(t_stack *x);
 t_stack	*get_last2(t_stack *x);
-t_stack	*ft_atol(t_stack *lst, char **str, int **s, int *cnt);
+t_stack	*ft_atol(t_stack *lst, char **str, t_data *data);
 int		hayirlisi(int *a);
 int		list_size(t_stack *lst);
 int		error(void);
-int		num_check(int tmp, int **s, int *chk);
-int     ft_atoi_v2(const char *str, int *chk);
-void	stack_print(t_stack *a, t_stack *b);
+int		num_check(int tmp, t_data *data);
+int     ft_atoi_v2(const char *str, t_data *data);
+void	stack_print(t_stack *a, t_stack *b, t_data data);
 void	ft_sa(t_stack *a, int i);
 void	ft_sb(t_stack *b, int i);
 void	ft_ss(t_stack *a, t_stack *b);

@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:00:11 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 09:59:05 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 20:33:08 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	*ft_intjoin(int *a, int tmp, int i)
 	return (c);
 }
 
-int	num_check(int tmp, int **s, int *cnt)
+int	num_check(int tmp, t_data *data)
 {
 	static int	i;
 	static int	*a;
 	int			j;
 
-	*cnt = i++;
+	(*data).count = i++;
 	j = 0;
 	if (i == 1)
 	{
@@ -56,7 +56,7 @@ int	num_check(int tmp, int **s, int *cnt)
 		}
 		a = ft_intjoin(a, tmp, i);
 	}
-	*s = a;
+	(*data).s = a;
 	return (1);
 }
 
@@ -66,7 +66,7 @@ t_stack	*free_v2(char *str)
 	return (0);
 }
 
-t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk, int *cnt)
+t_stack	*split_atoi(t_stack *lst, char **str, t_data *data)
 {
 	int		i;
 	int		j;
@@ -81,8 +81,8 @@ t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk, int *cnt)
 		j = 0;
 		while (tom[j])
 		{
-			tmp = ft_atoi_v2(tom[j], chk);
-			if (!num_check(tmp, s, cnt) || !chk[0])
+			tmp = ft_atoi_v2(tom[j], data);
+			if (!num_check(tmp, data) || !(*data).chk)
 				return (free_v2(tom[j]));
 			ls = list_new(tmp);
 			lst = list_addback(lst, ls);
@@ -92,17 +92,16 @@ t_stack	*split_atoi(t_stack *lst, char **str, int **s, int *chk, int *cnt)
 		free(tom);
 		i++;
 	}
+	free((*data).s);
 	return (lst);
 }
 
-t_stack	*ft_atol(t_stack *lst, char **str, int **s, int *cnt)
+t_stack	*ft_atol(t_stack *lst, char **str, t_data *data)
 {
 	int	i;
 	int	j;
-	int	c;
-	int	chk;
 
-	chk = 1;
+	(*data).chk = 1;
 	i = 1;
 	while (str[i] != 0)
 	{
@@ -119,5 +118,5 @@ t_stack	*ft_atol(t_stack *lst, char **str, int **s, int *cnt)
 		}
 		i++;
 	}
-	return (split_atoi(lst, str, s, &chk, cnt));
+	return (split_atoi(lst, str, data));
 }

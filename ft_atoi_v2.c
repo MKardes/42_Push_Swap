@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-int	error_v2(int *chk)
+int	error_v2(t_data *data)
 {
 	error();
-	*chk = 0;
+	(*data).chk = 0;
 	return(0);
 }
 
-int	ft_atoi_v2(const char *str, int *chk)
+int	ft_atoi_v2(const char *str, t_data *data)
 {
 	int	i;
 	int	a;
@@ -28,7 +28,7 @@ int	ft_atoi_v2(const char *str, int *chk)
 	{
 		tmp = tmp * 10 + str[i] - 48;
 		if ((a == 1 && tmp > 2147483647) || (a == -1 && tmp > 2147483648))
-			return(error_v2(chk));
+			return(error_v2(data));
 		i++;
 	}
 	return (tmp * a);

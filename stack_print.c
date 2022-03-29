@@ -6,13 +6,13 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:15:27 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/09 20:19:50 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/29 12:33:33 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_print(t_stack *a, t_stack *b)
+void	stack_print(t_stack *a, t_stack *b, t_data data)
 {
 	int	x;
 	int	y;
@@ -72,7 +72,7 @@ void	stack_print(t_stack *a, t_stack *b)
 	{
 		if (b -> content >= 0 && b -> content < 10)
 			printf("\n|     |  |  %d  |", b -> content);
-		else if ((b -> content > 10 && b -> content < 100)
+		else if ((b -> content >= 10 && b -> content < 100)
 			|| (b -> content < 0 && b -> content > -10))
 			printf("\n|     |  |  %d |", b -> content);
 		else if ((b -> content >= 100 && b -> content < 1000)
@@ -86,5 +86,5 @@ void	stack_print(t_stack *a, t_stack *b)
 		b = b -> next;
 	}
 	printf("\n-------  -------");
-	printf("\nStack A  Stack B\n\n");
+	printf("\nStack A  Stack B\nA Count --> %d\nB Count --> %d\n\n", data.a_cnt, data.b_cnt);
 }
