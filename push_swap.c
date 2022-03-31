@@ -6,77 +6,50 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 20:31:30 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/03/31 20:20:25 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rr_check(t_stack **a, t_stack **b, int *gecici)
+void	rr_check(t_stack **a, t_stack **b, t_data *data)
 {
 	int rx;
 
     rx = is_rx(*a, *b);
     if (rx == ra)
-	{
-        ft_ra(a, 1);
-		gecici[0]++;
-	}
+        ft_ra(a, 1, data);
     else if (rx == rb)
-	{
-        ft_rb(b, 1);
-		gecici[0]++;
-	}
+        ft_rb(b, 1, data);
 	else if (rx == rr)
-	{
-        ft_rr(a, b);
-		gecici[0]++;
-	}
+        ft_rr(a, b, data);
 }
 
-void	ss_check(t_stack **a, t_stack **b, int *gecici)
+void	ss_check(t_stack **a, t_stack **b, t_data *data)
 {
 	int	sx;
 
 	if (!*b)
 	{
 		if ((*a) -> content > (*a) -> next -> content)
-		{
-			ft_sa(*a, 1);
-			gecici[0]++;
-		}
+			ft_sa(*a, 1, data);
 		return ;
 	}
 	if (!((*a) -> next) || !((*b) -> next))
 	{
 		if (!((*b) -> next) && (*a) -> content > (*a) -> next -> content)
-		{
-			ft_sa(*a, 1);
-			(*gecici)++;
-		}
+			ft_sa(*a, 1, data);
 		else if (!((*a) -> next) && (*b) -> content < (*b) -> next -> content)
-		{
-			ft_sb(*b, 1);
-			(*gecici)++;
-		}
+			ft_sb(*b, 1, data);
 		return ;
 	}
 	sx = is_sx(*a, *b);
     if (sx == sa)
-	{
-        ft_sa(*a, 1);
-		(*gecici)++;
-	}
+        ft_sa(*a, 1, data);
 	else if (sx == sb)
-	{
-        ft_sb(*b, 1);
-		(*gecici)++;
-	}
+        ft_sb(*b, 1, data);
 	else if (sx == ss)
-	{
-        ft_ss(*a, *b);
-		(*gecici)++;
-	}
+        ft_ss(*a, *b, data);
 }
 
 int	a_check(t_stack *a)
@@ -103,7 +76,7 @@ int b_check(t_stack *b)
     return (1);
 }
 
-int	all_check(t_stack **a, t_stack **b, int *gecici)
+int	all_check(t_stack **a, t_stack **b)
 {
 	if (a_check(*a) && b_check(*b))
 	{
@@ -117,12 +90,11 @@ void	move_to_b(t_stack **a, t_stack **b, t_data *data)
 {
 	while ((*data).a_cnt > (*data).a_rst)
 	{
-		rr_check(a, b, &(*data).gecici);
-		ss_check(a, b, &(*data).gecici);
-		ft_pb(a,b);
+		rr_check(a, b, data);
+		ss_check(a, b, data);
+		ft_pb(a,b, data);
 		(*data).a_cnt--;
 		(*data).b_cnt++;
-		(*data).gecici++;
 	}
 }
 
@@ -142,10 +114,9 @@ void	move_to_a(t_stack **a, t_stack **b, t_data *data)
 {
 	while ((*data).b_cnt > (*data).b_rst)
 	{
-		rr_check(a, b, &(*data).gecici);
-		ss_check(a, b, &(*data).gecici);
-		ft_pa(a, b);
-		(*data).gecici++;
+		rr_check(a, b, data);
+		ss_check(a, b, data);
+		ft_pa(a, b, data);
 		(*data).b_cnt--;
 		(*data).a_cnt++;
 	}
@@ -175,7 +146,6 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 	t_data	data;
-	data.gecici = 0;
 	data.a_rst = 2;
 	data.b_rst = 2;
 	int		i;
@@ -186,6 +156,10 @@ int	main(int ac, char **av)
 	start(&a, &b, &data);
 	//while (!(all_check(&a, &b, &gecici))
 	stack_print(a, b, data);
-	printf("*****%d*****",data.gecici);
+	while (data.steps)
+	{
+		printf("%s",data.steps -> content);
+		data.steps = data.steps -> next;
+	}
 	return (0);
 }
