@@ -12,25 +12,25 @@ int is_rx(t_stack *a, t_stack *b)
 	if (!b)
 	{
 		if (a -> content > a_last -> content)
-        	return (ra);
-		return (4);
+        	return (RA);
+		return (-1);
 	}
 	if (a -> content > a_last -> content && b -> content < b_last -> content)
-		return (rr);
+		return (RR);
     else if (b -> content < b_last -> content)
-		return (rb);
+		return (RB);
 	if (a -> content > a_last -> content)
-        return (ra);
-	return (4);
+        return (RA);
+	return (-1);
 }
 
 int	is_sx(t_stack *a, t_stack *b)
 {
 	if (a -> content > a -> next -> content && b -> content < b -> next -> content)
-		return (ss);
+		return (SS);
 	if (b -> content < b -> next -> content)
-		return (sb);
+		return (SB);
 	if (a -> content > a -> next -> content)
-		return (sa);
-	return (4);
+		return (SA);
+	return (-1);
 }

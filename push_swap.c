@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/31 20:20:25 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/04/03 23:35:54 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	rr_check(t_stack **a, t_stack **b, t_data *data)
 	int rx;
 
     rx = is_rx(*a, *b);
-    if (rx == ra)
+    if (rx == RA)
         ft_ra(a, 1, data);
-    else if (rx == rb)
+    else if (rx == RB)
         ft_rb(b, 1, data);
-	else if (rx == rr)
+	else if (rx == RR)
         ft_rr(a, b, data);
 }
 
@@ -44,11 +44,11 @@ void	ss_check(t_stack **a, t_stack **b, t_data *data)
 		return ;
 	}
 	sx = is_sx(*a, *b);
-    if (sx == sa)
+    if (sx == SA)
         ft_sa(*a, 1, data);
-	else if (sx == sb)
+	else if (sx == SB)
         ft_sb(*b, 1, data);
-	else if (sx == ss)
+	else if (sx == SS)
         ft_ss(*a, *b, data);
 }
 
@@ -129,13 +129,13 @@ void	start(t_stack **a, t_stack **b, t_data *data)
     (*data).b_cnt = 0;
 	//while (!(all_check(a, b, &(*data).gecici)))
 	int	i = 0;
-	while (i < 14)
+	while (i < 4)
 	{
 		move_to_b(a, b, data);
 		//stack_print(*a, *b, *data);
 		move_to_a(a, b, data);
-		(*data).a_rst += 2;
-		(*data).b_rst += 2;
+		(*data).a_rst = 2;
+		(*data).b_rst = 2;
 		//stack_print(*a, *b, *data);
 		i++;
 	}
@@ -148,6 +148,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	data.a_rst = 2;
 	data.b_rst = 2;
+	data.steps = NULL;
 	int		i;
 
 	b = NULL;
@@ -156,7 +157,8 @@ int	main(int ac, char **av)
 	start(&a, &b, &data);
 	//while (!(all_check(&a, &b, &gecici))
 	stack_print(a, b, data);
-	while (data.steps)
+	//get_simple(&data);
+	while (data.steps -> next)
 	{
 		printf("%s",data.steps -> content);
 		data.steps = data.steps -> next;

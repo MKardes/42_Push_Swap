@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:59:41 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/31 20:08:44 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/04/03 22:39:38 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_ra(t_stack **a, int i, t_data *data)
 	*a = first -> next;
 	first -> next = NULL;
 	if (i == 1)
-		steps("ra\n", data);
+		steps("ra\n", data, RA);
 		//write(1, "ra\n", 3);
 }
 
@@ -38,7 +38,7 @@ void	ft_rb(t_stack **b, int i, t_data *data)
 	*b = first -> next;
 	first -> next = NULL;
 	if (i == 1)
-		steps("rb\n", data);
+		steps("rb\n", data, RB);
 		//write(1, "rb\n", 3);
 }
 
@@ -46,6 +46,6 @@ void	ft_rr(t_stack **a, t_stack **b, t_data *data)
 {
 	ft_ra(a, 2, data);
 	ft_rb(b, 2, data);
-	steps("rr\n", data);
+	steps("rr\n", data, RR);
 	//write(1, "rr\n", 3);
 }
