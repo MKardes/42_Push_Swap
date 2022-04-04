@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:27:10 by mkardes           #+#    #+#             */
-/*   Updated: 2022/04/04 15:05:30 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/04/04 12:10:08 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # include "Libft/libft.h"
 # include <stdio.h>
 
+typedef struct s_step {
+	char			*content;
+	int			format;
+	struct s_step	*next;
+}	t_step;
+
 typedef struct s_data {
 	int		a_cnt;
 	int		b_cnt;
@@ -33,6 +39,13 @@ typedef struct s_data {
 	int		chk;
 	int		a_rst;
 	int		b_rst;
+	int		pa_cnt;
+	int		pb_cnt;
+	int		rev_pa_cnt;
+	int		rev_pb_cnt;
+	int		cnt;
+	t_step *steps;
+	t_step	*tmp;
 }	t_data;
 
 typedef struct s_stack {
@@ -63,5 +76,9 @@ void	ft_rrb(t_stack **b, int i, t_data *data);
 void	ft_rrr(t_stack **a, t_stack **b, t_data *data);
 void	ft_pa(t_stack **a, t_stack **b, t_data *data);
 void	ft_pb(t_stack **a, t_stack **b, t_data *data);
+int		is_rx(t_stack *a, t_stack *b);
+int		is_sx(t_stack *a, t_stack *b);
+void 	steps(char *rs, t_data *data, int format);
+void	get_simple(t_data *data);
 
 #endif
