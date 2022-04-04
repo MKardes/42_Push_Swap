@@ -6,21 +6,15 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:27:10 by mkardes           #+#    #+#             */
-/*   Updated: 2022/04/04 15:05:30 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:55:44 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define SA 0
-# define SB 1
-# define SS 2
-# define RA 3
-# define RB 4
-# define RR 5
-# define PA 6
-# define PB 7
+# define RA 0
+# define RRA 1
 
 # include "Libft/libft.h"
 # include <stdio.h>
@@ -31,8 +25,6 @@ typedef struct s_data {
 	int		count;
 	int		*s;
 	int		chk;
-	int		a_rst;
-	int		b_rst;
 }	t_data;
 
 typedef struct s_stack {
