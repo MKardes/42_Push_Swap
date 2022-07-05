@@ -32,3 +32,46 @@ t_stack	*get_last2(t_stack *x)
 		x = x -> next;
 	return (x);
 }
+
+void	array_sort(int **a, int h)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	while (i < h - 1)
+	{
+		j = i + 1;
+		while (j < h)
+		{
+			if (a[0][i] > a[0][j])
+			{
+				tmp = a[0][i];
+				a[0][i] = a[0][j];
+				a[0][j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	stack_indisle(t_stack **a, t_data data)
+{
+	t_stack *tmp;
+	int		i;
+
+	i = 0;
+	while (i < data.count)
+	{
+		tmp = *a;
+		while (tmp -> next)
+		{
+			if (tmp -> content == data.s[i])
+				tmp -> index = i;
+			tmp = tmp -> next;
+		}
+		i++;
+	}
+}

@@ -92,7 +92,6 @@ t_stack	*split_atoi(t_stack *lst, char **str, t_data *data)
 		free(tom);
 		i++;
 	}
-	free((*data).s);
 	return (lst);
 }
 

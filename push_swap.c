@@ -12,70 +12,60 @@
 
 #include "push_swap.h"
 
-int	min_finder(t_stack *a)
+int		is_sorted(t_stack *a)
 {
-	int	min;
-
-	min = a -> content;
 	while (a -> next)
 	{
-		if (a -> content < min)
-			min = a -> content;
+		if (a -> content > a -> next -> content)
+			return (0);
 		a = a -> next;
 	}
-	if (a -> content < min)
-			min = a -> content;
-	return (min);
-}
-
-int	ra_rra_choice(int min, t_stack *a, t_data *data)
-{
-	int	i;
-
-	i = 1;
-	if (a -> content == min)
-		return (2);
-	while (a -> next && a -> content != min)
-	{
-		a = a -> next;
-		i++;
-	}
-	if ((data -> a_cnt - i) >= data -> a_cnt / 2)
-		return (RA);
-	return (RRA);
-}
-
-void	get_it(t_stack **a, t_stack **b, int format, int min, t_data *data)
-{
-	if (format == 2)
-		ft_pb(a, b, data);
-	else if (format == RA)
-	{
-		while ((*a) -> content != min)
-			ft_ra(a, 1, data);
-		ft_pb(a, b, data);
-	}
-	else
-	{
-		while ((*a) -> content != min)
-			ft_rra(a, 1, data);
-		ft_pb(a, b, data);
-	}
+	return (1);
 }
 
 void	begin(t_stack **a, t_stack **b, t_data *data)
 {
-	int	min;
-	int	format;
-	
-	while ((*a) -> next)
+	int i;
+	t_stack *tmp;
+
+	i = 0;
+	while (i < 3)
 	{
-		min = min_finder(*a);
-		format = ra_rra_choice(min, *a, data);
-		get_it(a, b, format, min, data);
+		tmp = get_listlast(*a);
+		while ((*a) != tmp)
+		{
+			printf("indis: %d\n", (*a) -> index);
+			if (((*a) -> index >> i & 1) != 1)
+			{
+				printf("%d,",(*a) -> content);
+				ft_pb(a, b, data);
+			}
+			else
+				ft_ra(a, 1, data);
+		}
+		if (((*a) -> index >> i | 0) == 0)
+			ft_pb(a, b, data);
+		else
+			ft_ra(a, 1, data);
+		while ((*b) && (*b) -> next)
+		{
+			ft_pa(&tmp, b, data);
+			*b = (*b) -> next;
+		}
+		i++;
 	}
-	while (*b)
-		ft_pa(a, b, data);
+}
+
+void int_put(int *a)
+{
+	int i = 0;
+
+	while (i < 10)
+	{
+		printf("%d, ",a[i]);
+		i++;
+	}
+	printf("\n");
 }
 
 int	main(int ac, char **av)
@@ -87,9 +77,14 @@ int	main(int ac, char **av)
 	b = NULL;
 	a = NULL;
 	a = ft_atol(a, av, &data);
+
 	data.count += 1;
     data.a_cnt = data.count;
     data.b_cnt = 0;
+	array_sort(&data.s, data.count);
+	stack_indisle(&a, data);
+	stack_print(a, b, data);
 	begin(&a, &b, &data);
+	stack_print(a, b, data);
 	return (0);
 }

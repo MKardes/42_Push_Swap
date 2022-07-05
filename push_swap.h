@@ -30,6 +30,7 @@ typedef struct s_data {
 typedef struct s_stack {
 	int				content;
 	struct s_stack	*next;
+	int				index;
 }	t_stack;
 
 t_stack	*list_new(int a);
@@ -43,6 +44,7 @@ int		list_size(t_stack *lst);
 int		error(void);
 int		num_check(int tmp, t_data *data);
 int		ft_atoi_v2(const char *str, t_data *data);
+int		is_sorted(t_stack *a);
 void	stack_print(t_stack *a, t_stack *b, t_data data);
 void	ft_sa(t_stack *a, int i, t_data *data);
 void	ft_sb(t_stack *b, int i, t_data *data);
@@ -55,5 +57,7 @@ void	ft_rrb(t_stack **b, int i, t_data *data);
 void	ft_rrr(t_stack **a, t_stack **b, t_data *data);
 void	ft_pa(t_stack **a, t_stack **b, t_data *data);
 void	ft_pb(t_stack **a, t_stack **b, t_data *data);
+void	array_sort(int	**s, int cnt);
+void    stack_indisle(t_stack **a, t_data data);
 
 #endif
