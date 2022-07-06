@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:00:39 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/09 20:42:26 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/06 15:51:11 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	stack_indisle(t_stack **a, t_data data)
 	while (i < data.count)
 	{
 		tmp = *a;
-		while (tmp -> next)
+		while (tmp != NULL)
 		{
 			if (tmp -> content == data.s[i])
-				tmp -> index = i;
+				tmp -> index = i;			
 			tmp = tmp -> next;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/04/04 17:23:59 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/06 16:13:48 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,49 +23,68 @@ int		is_sorted(t_stack *a)
 	return (1);
 }
 
-void	begin(t_stack **a, t_stack **b, t_data *data)
+void	begin_radix(t_stack **a, t_stack **b, t_data *data)
 {
 	int i;
-	t_stack *tmp;
+	int	j;
+	int	a_cnt;
 
 	i = 0;
-	while (i < 3)
+	while (!is_sorted(*a))
 	{
-		tmp = get_listlast(*a);
-		while ((*a) != tmp)
+		a_cnt = data -> a_cnt;
+		j = 0;
+		while (j < a_cnt)
 		{
-			printf("indis: %d\n", (*a) -> index);
 			if (((*a) -> index >> i & 1) != 1)
-			{
-				printf("%d,",(*a) -> content);
 				ft_pb(a, b, data);
-			}
 			else
 				ft_ra(a, 1, data);
+			j++;
 		}
-		if (((*a) -> index >> i | 0) == 0)
-			ft_pb(a, b, data);
-		else
-			ft_ra(a, 1, data);
-		while ((*b) && (*b) -> next)
-		{
-			ft_pa(&tmp, b, data);
-			*b = (*b) -> next;
-		}
+		while (*b)
+			ft_pa(a, b, data);
 		i++;
 	}
 }
 
-void int_put(int *a)
+int rev_sort_triple_check(t_stack **x, t_data *data)
 {
-	int i = 0;
+	t_stack *a;
 
-	while (i < 10)
+	a = *x;
+	if ((*data).a_cnt != 3)
+		return (0);
+	while (a -> next)
 	{
-		printf("%d, ",a[i]);
-		i++;
+		if (a -> content < a -> next -> content)
+			return (0);
+		a = a -> next;
 	}
-	printf("\n");
+	ft_ra(x, 1, data);
+	ft_sa(*x, 1, data);
+	return (1);
+}
+
+void	begin(t_stack **a, t_stack **b, t_data *data)
+{
+	if (data -> a_cnt == 3)
+    {
+        algorithm_3(a, data);
+        return;
+    }
+	if (is_sorted(*a))
+		return ;
+	if (rev_sort_triple_check(a, data))
+		return ;
+	if (data -> count <= 100)
+	{
+		data -> i = 0;
+		partly_sorting(a, b, data);
+	}
+	else if (data -> count > 100)
+		begin_radix(a, b, data);
+	free(data -> s);
 }
 
 int	main(int ac, char **av)
@@ -74,17 +93,19 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	t_data	data;
 
-	b = NULL;
-	a = NULL;
-	a = ft_atol(a, av, &data);
-
-	data.count += 1;
-    data.a_cnt = data.count;
-    data.b_cnt = 0;
-	array_sort(&data.s, data.count);
-	stack_indisle(&a, data);
-	stack_print(a, b, data);
-	begin(&a, &b, &data);
-	stack_print(a, b, data);
+	if (ac > 1)
+	{
+		b = NULL;
+		a = NULL;
+		a = ft_atol(a, av, &data);
+		data.count += 1;
+    	data.a_cnt = data.count;
+    	data.b_cnt = 0;
+		array_sort(&data.s, data.count);
+		stack_indisle(&a, data);
+	//	stack_print(a, b, data);
+		begin(&a, &b, &data);
+	//	stack_print(a, b, data);
+	}
 	return (0);
 }
