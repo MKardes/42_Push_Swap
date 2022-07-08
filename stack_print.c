@@ -35,7 +35,7 @@ void	stack_print(t_stack *a, t_stack *b, t_data data)
 			printf("\n| %d|  ", a -> content);
 		else
 			printf("\n|%d|  ", a -> content);
-		if (b -> content >= 0 && b -> content < 10)	
+		if (b -> content >= 0 && b -> content < 10)
 			printf("|  %d  |", b -> content);
 		else if ((b -> content >= 10 && b -> content < 100)
 			|| (b -> content < 0 && b -> content > -10))
@@ -86,5 +86,6 @@ void	stack_print(t_stack *a, t_stack *b, t_data data)
 		b = b -> next;
 	}
 	printf("\n-------  -------");
-	printf("\nStack A  Stack B\nA Count --> %d\nB Count --> %d\n\n", data.a_cnt, data.b_cnt);
+	printf("\nStack A  Stack B\nA Count --> %d\nB Count --> %d\n\n",
+		data.a_cnt, data.b_cnt);
 }

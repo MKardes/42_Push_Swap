@@ -37,18 +37,3 @@ void	ft_rb(t_stack **b)
 	first -> next = NULL;
 	write(1, "rb\n", 3);
 }
-
-void	ft_rn(t_stack **a, t_stack **b, int n, int format)
-{
-	int	i;
-
-	i = 0;
-	if (n <= 0)
-		return ;
-	if (format == 'a')
-		while (i++ < n)
-			ft_ra(a);
-	else if (format == 'b')
-		while (i++ < n)
-			ft_rb(b);
-}

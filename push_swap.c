@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:58:42 by mkardes           #+#    #+#             */
-/*   Updated: 2022/07/08 07:55:53 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/08 13:38:14 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	algorithm_5(t_stack **stack, t_stack **stack_b, t_data *data)
 			ft_ra(stack);
 	}
 	algorithm_3(stack, data);
+	if ((*stack_b)-> index < (*stack_b)-> next -> index)
+		ft_sb(*stack_b);
 	ft_pan(stack, stack_b, data, 2);
 }
 
@@ -61,8 +63,7 @@ void	begin_radix(t_stack **a, t_stack **b, t_data *data)
 				ft_ra(a);
 			j++;
 		}
-		while (*b)
-			ft_pa(a, b, data);
+		ft_pan(a, b, data, data -> b_cnt);
 		i++;
 	}
 }
@@ -80,13 +81,7 @@ void	begin(t_stack **a, t_stack **b, t_data *data)
 	}
 	if (data -> a_cnt == 5)
 		algorithm_5(a, b, data);
-	else if (data -> count <= 100)
-	{
-		triple_clean(data, &x, &x);
-		data -> i = 0;
-		partly_sorting(a, b, data);
-	}
-	else if (data -> count > 100)
+	else if (data -> count > -100)
 		begin_radix(a, b, data);
 	free(data -> s);
 }

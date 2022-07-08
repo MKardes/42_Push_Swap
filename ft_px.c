@@ -57,15 +57,3 @@ void	ft_pan(t_stack **a, t_stack **b, t_data *data, int n)
 		i++;
 	}
 }
-
-void	ft_pbn(t_stack **a, t_stack **b, t_data *data, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		ft_pb(a, b, data);
-		i++;
-	}
-}
