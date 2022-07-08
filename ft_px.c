@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:59:03 by mkardes           #+#    #+#             */
-/*   Updated: 2022/04/04 17:11:34 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/08 07:37:04 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,30 @@ void	ft_pb(t_stack **a, t_stack **b, t_data *data)
 	tmp -> next = *b;
 	*b = tmp;
 	(*data).a_cnt--;
-    (*data).b_cnt++;
+	(*data).b_cnt++;
 	write(1, "pb\n", 3);
+}
+
+void	ft_pan(t_stack **a, t_stack **b, t_data *data, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		ft_pa(a, b, data);
+		i++;
+	}
+}
+
+void	ft_pbn(t_stack **a, t_stack **b, t_data *data, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		ft_pb(a, b, data);
+		i++;
+	}
 }

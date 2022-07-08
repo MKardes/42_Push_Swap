@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:28:36 by mkardes           #+#    #+#             */
-/*   Updated: 2022/07/06 17:29:45 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/08 07:45:09 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	index_check(t_stack *a, int k, int i, int j)
 		a = a -> next;
 		y++;
 	}
-	//printf("sayi: %d\n", a -> content);
 	if (a -> index >= i && a -> index <= j)
 		return (1);
 	return (0);
@@ -35,13 +34,11 @@ void	continue_pushing(t_stack **a, t_stack **b, t_data *data)
 	{
 		if ((*a)-> index == data -> count - 1 || (*a)-> index
 			== data -> count - 2 || (*a)-> index == data -> count - 3)
-			ft_ra(a, 1, data);
+			ft_ra(a);
 		else
 			ft_pb(a, b, data);
 	}
 	algorithm_3(a, data);
-	stack_print (*a, *b, *data);
-
 }
 
 void	missing_while(t_stack **a, t_stack **b, t_data *data, int *k)
@@ -54,18 +51,17 @@ void	missing_while(t_stack **a, t_stack **b, t_data *data, int *k)
 		if (index_check(*a, *k, data -> i, data -> j))
 		{
 			while (g++ < (*k))
-				ft_ra(a, 1, data);
-//          printf("\ntop(%d) i: %d\n", (*a) -> content, (*a) -> index);
+				ft_ra(a);
 			ft_pb(a, b, data);
 			*k = 0;
 		}
-		else if (index_check(*a, data -> a_cnt - (*k) - 1, data -> i, data -> j))
+		else if (index_check(*a, data -> a_cnt - (*k)
+				- 1, data -> i, data -> j))
 		{
 			while (g++ < (*k) + 1)
-				ft_rra(a, 1, data);
+				ft_rra(a);
 			*k = 0;
-//      printf("\nbot(%d) i: %d\n", (*a) -> content, (*a) -> index);
-		ft_pb(a, b, data);
+			ft_pb(a, b, data);
 		}
 		(*k)++;
 	}
@@ -90,22 +86,24 @@ void	partly_sorting(t_stack **a, t_stack **b, t_data *data)
 
 void	algorithm_3(t_stack **a, t_data *data)
 {
+	if (is_sorted(*a))
+		return ;
 	if ((*a)-> index < (*a)-> next -> index && (*a)->index
 		< (*a)-> next-> next -> index)
 	{
-		ft_rra(a, 1, data);
+		ft_rra(a);
 		ft_sa(*a, 1, data);
 	}
 	else if ((*a)->index < (*a)-> next -> index && (*a)-> index
 		> (*a)-> next -> next -> index)
-		ft_rra(a, 1, data);
+		ft_rra(a);
 	else if ((*a)-> index < (*a)-> next -> next -> index)
 		ft_sa(*a, 1, data);
 	else if ((*a)-> next -> index > (*a)-> next -> next -> index)
 	{
 		ft_sa(*a, 1, data);
-		ft_rra(a, 1, data);
+		ft_rra(a);
 	}
 	else
-		ft_ra(a, 1, data);
+		ft_ra(a);
 }

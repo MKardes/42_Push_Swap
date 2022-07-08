@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:00:11 by mkardes           #+#    #+#             */
-/*   Updated: 2022/03/29 20:33:08 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/08 07:36:10 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ t_stack	*ft_atol(t_stack *lst, char **str, t_data *data)
 		j = 0;
 		while (str[i][j])
 		{
-			if (!(ft_isdigit(str[i][j]) || str[i][j] == ' ' || ((str[i][j] == '-'
-				|| str[i][j] == '+') && ft_isdigit(str[i][j + 1]))))
+			if (!(ft_isdigit(str[i][j]) || str[i][j] == ' ' || ((str[i][j]
+				== '-' || str[i][j] == '+') && ft_isdigit(str[i][j + 1]))))
 			{
 				error();
 				return (NULL);

@@ -6,7 +6,7 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:00:39 by mkardes           #+#    #+#             */
-/*   Updated: 2022/07/06 15:51:11 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/08 07:39:06 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	array_sort(int **a, int h)
 
 void	stack_indisle(t_stack **a, t_data data)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	i = 0;
@@ -69,7 +69,7 @@ void	stack_indisle(t_stack **a, t_data data)
 		while (tmp != NULL)
 		{
 			if (tmp -> content == data.s[i])
-				tmp -> index = i;			
+				tmp -> index = i;
 			tmp = tmp -> next;
 		}
 		i++;

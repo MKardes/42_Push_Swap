@@ -6,13 +6,13 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:59:41 by mkardes           #+#    #+#             */
-/*   Updated: 2022/04/04 14:38:52 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/08 07:35:38 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_ra(t_stack **a, int i, t_data *data)
+void	ft_ra(t_stack **a)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -22,12 +22,10 @@ void	ft_ra(t_stack **a, int i, t_data *data)
 	last -> next = first;
 	*a = first -> next;
 	first -> next = NULL;
-	if (i == 1)
-		//steps("ra\n", data, RA);
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	ft_rb(t_stack **b, int i, t_data *data)
+void	ft_rb(t_stack **b)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -37,15 +35,20 @@ void	ft_rb(t_stack **b, int i, t_data *data)
 	last -> next = first;
 	*b = first -> next;
 	first -> next = NULL;
-	if (i == 1)
-		//steps("rb\n", data, RB);
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	ft_rr(t_stack **a, t_stack **b, t_data *data)
+void	ft_rn(t_stack **a, t_stack **b, int n, int format)
 {
-	ft_ra(a, 2, data);
-	ft_rb(b, 2, data);
-	//steps("rr\n", data, RR);
-	write(1, "rr\n", 3);
+	int	i;
+
+	i = 0;
+	if (n <= 0)
+		return ;
+	if (format == 'a')
+		while (i++ < n)
+			ft_ra(a);
+	else if (format == 'b')
+		while (i++ < n)
+			ft_rb(b);
 }

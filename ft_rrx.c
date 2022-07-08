@@ -6,13 +6,13 @@
 /*   By: mkardes <mkardes@student.42kocaeli.com.tr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:59:17 by mkardes           #+#    #+#             */
-/*   Updated: 2022/04/04 14:39:57 by mkardes          ###   ########.fr       */
+/*   Updated: 2022/07/07 19:54:12 by mkardes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rra(t_stack **a, int i, t_data *data)
+void	ft_rra(t_stack **a)
 {
 	t_stack	*last2;
 	t_stack	*tmp;
@@ -23,12 +23,10 @@ void	ft_rra(t_stack **a, int i, t_data *data)
 	tmp -> next = *a;
 	last2 -> next = NULL;
 	*a = tmp;
-	if (i == 1)
-		//steps("rra\n", data, -1);
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
-void	ft_rrb(t_stack **b, int i, t_data *data)
+void	ft_rrb(t_stack **b)
 {
 	t_stack	*last2;
 	t_stack	*tmp;
@@ -39,15 +37,20 @@ void	ft_rrb(t_stack **b, int i, t_data *data)
 	tmp -> next = *b;
 	last2 -> next = NULL;
 	*b = tmp;
-	if (i == 1)
-		//steps("rrb\n", data, -1);
-		write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
-void	ft_rrr(t_stack **a, t_stack **b, t_data *data)
+void	ft_rrn(t_stack **a, t_stack **b, int n, int format)
 {
-	ft_rra(a, 2, data);
-	ft_rrb(b, 2, data);
-	//steps("rrr\n", data, -1);
-	write(1, "rrr\n", 4);
+	int	i;
+
+	i = 0;
+	if (n <= 0)
+		return ;
+	if (format == 'a')
+		while (i++ < n)
+			ft_rra(a);
+	else if (format == 'b')
+		while (i++ < n)
+			ft_rrb(b);
 }
